@@ -1,7 +1,7 @@
 import { normalize, normalizeRgba } from "./parseColor";
 
 export const stringToRgba = (color:string):RgbaType => {
-    const [r, g, b, a = 1] = color.match(/[\d\.]+/g).map(item => parseFloat(item)%1 ? parseFloat(item) : parseInt(item));
+    const [r, g, b, a = 1] = (color.match(/[\d\.]+/g) as Array<string>).map(item => parseFloat(item)%1 ? parseFloat(item) : parseInt(item));
     return normalizeRgba({r,g,b,a});
 }
 export const rgbaToString = (color:RgbaType):string => {
@@ -10,7 +10,7 @@ export const rgbaToString = (color:RgbaType):string => {
 }
 
 export const stringToHsla = (color:string):HslaType => {
-    let [hue, saturation, lightness, alpha = 1] = color.match(/[\d\.]+%?/g).map(item => parseFloat(item)%1 ? parseFloat(item) : parseInt(item));
+    let [hue, saturation, lightness, alpha = 1] = (color.match(/[\d\.]+%?/g) as Array<string>).map(item => parseFloat(item)%1 ? parseFloat(item) : parseInt(item));
     return normalize({hue, saturation, lightness, alpha});
 }
 export const hslaToString = (color:HslaType):string => {
@@ -23,7 +23,7 @@ export const hexToRgba = (color:string):RgbaType => {
     if(tmp.length === 3)   tmp += 'F';
     if(tmp.length === 4)   tmp = tmp.split('').map(item => item.repeat(2)).join('');
     if(tmp.length === 6)   tmp += 'FF';
-    const [r, g, b, a] = tmp.match(/[\dA-Z]{2}/g).map((item, idx) => idx === 3 ? parseInt(item, 16)/255 : parseInt(item, 16));
+    const [r, g, b, a] = (tmp.match(/[\dA-Z]{2}/g) as Array<string>).map((item, idx) => idx === 3 ? parseInt(item, 16)/255 : parseInt(item, 16));
 
     return { r, g, b, a }
 }
@@ -56,6 +56,8 @@ export const RgbaToHsla = (color:RgbaType):HslaType => {
             case b :
                 $h = (r-g)/delta + 4;
                 break;
+            default :
+                $h = 0;
         }
         $h*=60;
         if($h <= 0) $h += 360;
@@ -104,6 +106,8 @@ export const HslaToRgba = (color:HslaType):RgbaType => {
         case 6 :
             r = c; g = x; b = 0;
             break;
+        default :
+            r = 0, g = 0, b = 0;
     }
     r = Math.round((r+m)*255);
     g = Math.round((g+m)*255);

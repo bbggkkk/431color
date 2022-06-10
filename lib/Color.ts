@@ -3,10 +3,10 @@ import { normalize, toHex, toHsla, toHslaString, toHslString, toRgba, toRgbaStri
 export class Hsl {
     color:HslaType
     constructor(color:string){
-        this.set(color);
+        this.color = this.setValue(color);
     }
 
-    get = function(type:ColorType|'RgbaType'|'HslaType') {
+    get = (type:ColorType|'RgbaType'|'HslaType') => {
         switch (type) {
             case 'RgbaType' :
                 return toRgba(this.color);
@@ -26,8 +26,11 @@ export class Hsl {
                 return this.color;
         }
     }
-    set = function(color:string):void {
+    set = (color:string) => {
         this.color = normalize(toHsla(color));
+    }
+    setValue = (color:string) => {
+        return normalize(toHsla(color));
     }
 }
 export class Color extends Hsl {
@@ -37,7 +40,7 @@ export class Color extends Hsl {
         this.initial = this.color;
     }
 
-    reset = function(){
+    reset = () => {
         this.color = this.initial;
     }
 }

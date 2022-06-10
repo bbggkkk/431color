@@ -1,13 +1,15 @@
 {
     "compilerOptions": {
-      "noImplicitAny": false,
-      "noEmitOnError": true,
-      "removeComments": false,
-      "sourceMap": true,
+      // "noImplicitAny": false,
+      // "noEmitOnError": true,
+      // "removeComments": false,
+      // "sourceMap": true,
+      "declaration": true,
+      "strict": true,
       "target": "es5",
       "lib": ["es2015", "dom", "dom.iterable"],
       "outDir": "dist"
     },
-    "include": ["lib/**/*"]
+    "include": ["lib/**/*", "lib/*.d.ts"]
   }
   

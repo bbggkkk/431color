@@ -152,7 +152,7 @@ export const toRgbString = (color:string|RgbaType|HslaType):string => {
 }
 
 export const parseColorType = (color:string):ColorType => {
-    const reg = {
+    const reg= {
         hex:/#(?:[\da-fA-F]{3})|(?:[\da-fA-F]{4})|(?:[\da-fA-F]{6})|(?:[\da-fA-F]{8})/,
         rgb:/rgb\(\s*\d{1,3}\s*\,\s*\d{1,3}\s*\,\s*\d{1,3}\s*\)/,
         rgba:/rgba\(\s*\d{1,3}\s*\,\s*\d{1,3}\s*\,\s*\d{1,3}\s*,\s*(?:\d+?|0?\.\d+)\s*\)/,
@@ -160,7 +160,7 @@ export const parseColorType = (color:string):ColorType => {
         hsla:/hsla\(\s*\d{1,3}\s*\,\s*(?:\d{1,3}%|0)\s*\,\s*(?:\d{1,3}%|0)\s*,\s*(?:\d+?|0?\.\d+)\s*\)/,
     }
     const keys = Object.keys(reg) as ColorType[];
-    const value = keys.find((item:string) => color.match(reg[item]));
+    const value = keys.find((item:'hex'|'rgb'|'rgba'|'hsl'|'hsla') => color.match(reg[item]));
 
     if(value === undefined){
         throw new Error("색깔 형식을 찾을 수 없습니다.");

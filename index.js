@@ -1,3 +1,4 @@
-const { Color } = require('./dist/Color');
+const { Color, Hsl } = require('./dist/Color');
 
-const color = new Color('');
+exports.Color = Color;
+exports.Hsl = Hsl;
