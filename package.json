@@ -1,0 +1,22 @@
+{
+  "name": "431color",
+  "version": "1.0.0",
+  "description": "자바스크립트로 색깔을 조절할 수 있는 라이브러리",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbggkkk/431color.git"
+  },
+  "keywords": [
+    "color"
+  ],
+  "author": "bbggkkk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bbggkkk/431color/issues"
+  },
+  "homepage": "https://github.com/bbggkkk/431color#readme"
+}
